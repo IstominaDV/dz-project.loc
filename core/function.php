@@ -10,4 +10,9 @@ function dd($data) {
     die;
 }
 
+function abort($code = 404) {
+    http_response_code($code);
+    require_once VIEWS. "/errors/{$code}.tmpl.php";
+    die;
+}
 ?>

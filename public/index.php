@@ -1,31 +1,11 @@
 <?
-define('ROOT', dirname(__DIR__));
-define('PATH', 'https://dz-project.loc');
+require_once dirname(__DIR__). '/config/config.php';
+require_once CORE . '/function.php';
 
-define('APP', ROOT . '/app');
-define('CONTROLLERS', APP . '/controllers');
-define('VIEWS', APP . '/views');
-define('COMPONENTS', VIEWS . '/components');
+require_once CLASSES. '/DB.php';
+$db_config = require_once CONFIG. '/db.php';
+$db = new DB($db_config);
+//dd($db);
 
-define('CONFIG', ROOT . '/config');
-
-define('CORE', ROOT . '/core');
-
-define('PUBLIC', ROOT . '/public');
-
-require_once CORE . '\function.php';
-
-
-$uri = trim($_SERVER['REQUEST_URI'], '/');
-// dd($uri);
-
-if ($uri == '' || $uri == 'index.php' || $uri == 'index') {
-    require_once CONTROLLERS . '\index.php';
-}
-else if($uri == 'contacts.php') {
-    require_once CONTROLLERS . '\contacts.php';
-}
-else {
-    //404
-}
+require_once CORE. '/router.php';
 ?>
