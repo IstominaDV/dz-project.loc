@@ -12,7 +12,7 @@ require_once COMPONENTS . '\header.php';
                 <?foreach ($posts as $post) : ?>
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="?<?=$post['slug']?>"><?=$post['title']?></a></h5>
+                            <h5 class="card-title"><a href="posts?id=<?=$post['post_id']?>"><?=$post['title']?></a></h5>
                             <p class="card-text"><?=$post['descr']?></p>
                             <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                         </div>

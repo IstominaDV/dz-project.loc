@@ -3,7 +3,7 @@ $title = 'Blog Home';
 $header = 'Recent posts';
 
 $sql = "SELECT * FROM `posts` ORDER BY `post_id` DESC";
-$posts = $db->query($sql)->fetchAll();
+$posts = $db->query($sql)->findAll();
 
 
 $most_popular_posts = $posts;

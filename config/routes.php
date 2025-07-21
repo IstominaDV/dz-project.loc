@@ -1,8 +1,11 @@
 <?
+//карта маршрутов
 $routes = [
     '' => 'index.php',
     'index.php' => 'index.php',
     'index' => 'index.php',
-    'contacts' => 'contacts.php'
+    'contacts' => 'contacts.php',
+    'posts' => 'show.php',
+    'create' => 'create.php'
 ];
 ?>
