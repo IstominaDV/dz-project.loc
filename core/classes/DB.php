@@ -33,8 +33,13 @@ class DB {
 
 
     public function query($sql, $params = []) {
-        $this->stmt = $this->conn->prepare($sql);
-        $this->stmt->execute($params);
+        try {
+            $this->stmt = $this->conn->prepare($sql);
+            $this->stmt->execute($params);
+        }
+        catch (PDOException $e) {
+            return false;
+        }
         return $this;
     }
 
