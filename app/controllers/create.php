@@ -27,28 +27,36 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             'min' => 5
         ]
     ];
-    //dd($data);
 
-    // if(empty($data['title'])) {
-    //     $errors['title'] = "Title field is required";
-    // }
-    // if(empty($data['descr'])) {
-    //     $errors['descr'] = "Description field is required";
-    // }
-    // if(empty($data['content'])) {
-    //     $errors['content'] = "Content field is required";
-    // }
+    $validator = new Validator();
+    $validator->validate($data, $rules);
 
-    if(empty($errors)) {
-        $sql = "INSERT INTO posts (`title`, `slug`, `descr`, `content`) VALUES (?,?,?,?)";
+    // if($validator->hasErrors()) {
+    //     $errors = $validator->getErrors();
+    // };
+
+    if(empty($data['title'])) {
+        $errors['title'] = "Title field is required";
+    }
+    if(empty($data['descr'])) {
+        $errors['descr'] = "Description field is required";
+    }
+    if(empty($data['content'])) {
+        $errors['content'] = "Content field is required";
+    }
+
+    if(!$validator->hasErrors()) {
+        $sql = "INSERT INTO `posts` (`title`, `slug`, `descr`, `content`) VALUES (?,?,?,?)";
         $data['slug'] = str_replace(" ", "-", $data['title']);
         if($db->query($sql, [$data['title'], $data['slug'], $data['descr'], $data['content']])) {
-            echo "Post created";
+            $_SESSION['success'] = "Post created";
         }
         else {
-            echo "Error";
+            $_SESSION['warning'] = "Server Error";
         }
     }
+
+    dump($_SESSION);
 }
 
 require_once VIEWS. '\create.tmpl.php';

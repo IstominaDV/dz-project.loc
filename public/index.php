@@ -1,4 +1,6 @@
 <?
+session_start();
+
 require_once dirname(__DIR__). '/config/config.php';
 require_once CORE . '/function.php';
 

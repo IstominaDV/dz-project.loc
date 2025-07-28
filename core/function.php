@@ -2,7 +2,7 @@
 function dump($data) {
     echo "<pre>";
         var_dump($data);
-    echo "/<pre>";
+    echo "</pre>";
 }
 
 function dd($data) {
@@ -34,5 +34,9 @@ function old(string $field_name) {
 
 function h($str) {
     return htmlspecialchars($str, ENT_QUOTES);
+}
+
+function len($str) {
+    return mb_strlen($str, 'UTF-8');
 }
 ?>
