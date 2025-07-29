@@ -50,6 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $data['slug'] = str_replace(" ", "-", $data['title']);
         if($db->query($sql, [$data['title'], $data['slug'], $data['descr'], $data['content']])) {
             $_SESSION['success'] = "Post created";
+            redirect(PATH);
         }
         else {
             $_SESSION['warning'] = "Server Error";
@@ -59,5 +60,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     dump($_SESSION);
 }
 
-require_once VIEWS. '\create.tmpl.php';
+require_once POSTS_VIEWS. '\create.tmpl.php';
 ?>

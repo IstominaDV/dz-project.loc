@@ -6,7 +6,7 @@ require_once COMPONENTS . '\header.php';
     <div class="row">
         <div class="col-9">
             <h3><?=$header ?? ""?></h3>
-            <form action="store" method="POST">
+            <form action="registration" method="POST">
                 <!-- Логин пользователя -->
                 <div class="mb-3">
                     <label for="login" class="form-label">Login:</label>

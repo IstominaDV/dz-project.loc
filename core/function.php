@@ -39,4 +39,44 @@ function h($str) {
 function len($str) {
     return mb_strlen($str, 'UTF-8');
 }
+
+function getAlerts() {
+
+    function getAlert($alert = 'info') {
+        echo "<div class='alert alert-$alert alert-dismissible fade show' role='alert'>
+        {$_SESSION[$alert]}
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+    }
+
+    $alerts = [
+    "success",
+    "danger",
+    "info",
+    "warning"
+    ];
+
+    if(!empty($_SESSION)) : ?>
+        <div class="container">
+            <? foreach($_SESSION as $key => $value):
+                if(in_array($key, $alerts)): 
+                    getAlert($key);
+                    unset($_SESSION[$key]);
+                endif;
+            endforeach;?>
+        </div>
+    <?endif;     
+}
+
+function redirect ($url = "") {
+    dump($_SERVER["HTTP_REFERER"]);
+    if($url) {
+        $redirect = $url;
+    }
+    else {
+        $redirect = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : PATH;
+    }
+    redirect("Location: {$redirect}");
+    die;
+}
 ?>

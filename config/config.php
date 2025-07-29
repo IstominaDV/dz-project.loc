@@ -6,6 +6,7 @@ define('APP', ROOT . '/app');
 define('CONTROLLERS', APP . '/controllers');
 define('VIEWS', APP . '/views');
 define('COMPONENTS', VIEWS . '/components');
+define('POSTS_VIEWS', VIEWS. '/posts');
 
 define('CONFIG', ROOT . '/config');
 

@@ -9,7 +9,7 @@ require_once COMPONENTS . '\header.php';
     ?>
         <div class="col-9">
             <h3><?=$header ?? ""?></h3>
-            <div><?=$post['content']?></div>
+            <div><?=$post['content']?></div>                                        
         </div>
     </div>
 </main>
